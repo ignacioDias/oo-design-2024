@@ -1,5 +1,9 @@
 package simulator;
 
+import simulator.duck.*;
+import simulator.flybehavior.*;
+import simulator.quackbehavior.*;
+
 public class DuckSimulator {
  
 	public static void main(String[] args) {
