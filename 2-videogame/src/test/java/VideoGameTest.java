@@ -80,6 +80,4 @@ class VideoGameTest {
         assertTrue(strong.isAlive());
         assertFalse(weak.isAlive());
     }
-
-
 }
