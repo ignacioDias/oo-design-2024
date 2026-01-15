@@ -1,3 +1,5 @@
+package videogame;
+
 import videogame.character.Character;
 
 public class Fight {
