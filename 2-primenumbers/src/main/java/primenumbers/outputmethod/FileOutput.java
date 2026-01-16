@@ -13,6 +13,8 @@ public class FileOutput implements OutputMethod {
         try {
             if (Files.notExists(FILE_PATH)) {
                 Files.createFile(FILE_PATH);
+            } else {
+                Files.write(FILE_PATH, new byte[0]); // clear file
             }
             for (Integer number : primeNumbers) {
                 Files.writeString(
