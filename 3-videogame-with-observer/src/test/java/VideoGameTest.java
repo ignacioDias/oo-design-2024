@@ -5,7 +5,7 @@ import videogame.character.*;
 import videogame.character.Character;
 import videogame.weapon.*;
 
-class CharacterTest {
+class VideoGameTest {
 
     @Test
     void characterStartsWithFistsAsDefaultWeapon() {
@@ -48,6 +48,5 @@ class CharacterTest {
                 () -> archer.setWeapon(new Sword())
         );
     }
-
 
 }
