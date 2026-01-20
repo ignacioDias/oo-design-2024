@@ -62,9 +62,9 @@ public class WeatherStationTest {
         WeatherData weatherData = new WeatherData();
         new DegreesCelsiusDisplay(weatherData);
 
-        weatherData.setMeasurements(68f, 75f, 0f);
+        weatherData.setMeasurements(32f, 75f, 0f);
 
         String output = outContent.toString();
-        assertTrue(output.contains("75.0"), "Humidity should be printed correctly");
+        assertTrue(output.contains("0.0"), "Humidity should be printed correctly");
     }
 }

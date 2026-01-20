@@ -7,9 +7,9 @@ public class InputTest {
 		int c;
 		InputStream in = null;
 		try {
-			in = new LowerCaseInputStream(
+			in = new CaesarCipher(
 					new BufferedInputStream(
-						new FileInputStream("test.txt")));
+						new FileInputStream("test.txt")), 1);
 
 			while((c = in.read()) >= 0) {
 				System.out.print((char)c);
