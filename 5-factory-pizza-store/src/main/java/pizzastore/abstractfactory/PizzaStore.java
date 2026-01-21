@@ -6,6 +6,10 @@ public abstract class PizzaStore {
  
 	public Pizza orderPizza(String type) {
 		Pizza pizza = createPizza(type);
+		if(pizza == null) {
+			System.out.println("--- Invalid pizza ---");
+			return null;
+		}
 		System.out.println("--- Making a " + pizza.getName() + " ---");
 		pizza.prepare();
 		pizza.bake();
