@@ -1,12 +1,15 @@
-No me gusta el haber usado:
-public void notifyObserversAboutFightStarting();
-public void notifyObserversAboutAttack(Character attacker, Character defender, int damage);
-public void notifyObserversAboutWinnerAndLoser(Character winner, Character loser);
-
-Con sus respectivos updates, ya que en caso de modificar algo tengo que ir a la interfaz y después
-a cada implementación hecha... La otra opción que me interesaba más era hacer una interfaz Event
-donde cada tipo de evento la implementa (o una clase Event con un atributo de Enum para diferenciarlos)
-el "problema" de esto es que en algún punto (para generar el toString en la clase padre, y para la clase
-de estadísticas y alguna parecida de algún futuro) voy a necesitar de un Switch para cada caso, para mí es más
-barato que definir un método por cada caso, pero entiendo que se busca evitar el uso de switches así que voy
-por esto
+No sería mejor tener un List<Gems> gems y listo?
+int damage() {
+    return WEAPON_DAMAGE + Σ(gems.damage)
+}
+Permita que cada arma soporte un número máximo de gemas, que puede variar según
+el tipo de arma.
+void addGem(gems) {
+    if gems.size < weapon.maxGems;
+        gems.add(gem)
+}
+Las gemas engastadas ya no podrán quitarse nunca.
+void removeGem(gem) {
+    if gem.uses > 0
+        gems.remove(gem)
+}

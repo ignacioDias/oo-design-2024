@@ -23,7 +23,7 @@ public class Character {
     }
 
     public int getAttackDamage() {
-        return weapon.damage;
+        return weapon.getDamage();
     }
 
     public void decreaseLife(int damage) {

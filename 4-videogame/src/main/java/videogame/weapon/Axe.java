@@ -6,5 +6,6 @@ public class Axe extends Weapon {
     public Axe() {
         this.damage = 20;
         this.combatType = CombatType.MELEE;
+        this.maxGems = 1;
     }
 }
