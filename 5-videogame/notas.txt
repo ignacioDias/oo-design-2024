@@ -1,0 +1,11 @@
+Acá lo que hubiera hecho en otro contexto sería establecer roles predeterminados para los personajes
+no le veo sentido a tener varias versiones si todos tienen acceso al mismo Wizard.java, de última
+haría una interfaz Wizard y cada una implementa el suyo, pero al final termino repitiendo código
+si la versión 3 no cambia nada de la 2.. de última hacer una genérica(?
+
+y no le veo sentido a tener un factory si el fight en sí no cambia, siendo que es donde más difiere cada versión
+hecha hasta el momento.. para agregar un poco de variedad intenté poner una versión classic que es más
+limitada y no tiene gemas, pero ahí queda en evidencia que el método addGem está mal puesto en la interfaz
+ya que no todas las versiones lo usarán
+
+me limité a hacer el factory tal como lo pedía la consigna
