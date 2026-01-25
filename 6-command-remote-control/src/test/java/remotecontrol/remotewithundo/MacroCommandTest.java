@@ -12,49 +12,49 @@ import static org.mockito.Mockito.*;
 class MacroCommandTest {
 
     @Mock
-    Lamp livingRoomLamp;
+    Lamp lamp;
 
     @Test
     void execute_shouldExecuteAllCommands() {
-        Command lampOn = new LampOnCommand(livingRoomLamp);
-        Command lampOff = new LampOffCommand(livingRoomLamp);
+        Command lampOn = new LampOnCommand(lamp);
+        Command lampOff = new LampOffCommand(lamp);
 
         MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.execute();
 
-        InOrder inOrder = inOrder(livingRoomLamp);
-        inOrder.verify(livingRoomLamp).on();
-        inOrder.verify(livingRoomLamp).off();
-        verifyNoMoreInteractions(livingRoomLamp);
+        InOrder inOrder = inOrder(lamp);
+        inOrder.verify(lamp).on();
+        inOrder.verify(lamp).off();
+        verifyNoMoreInteractions(lamp);
     }
 
     @Test
     void undo_shouldUndoAllCommands() {
-        Command lampOn = new LampOnCommand(livingRoomLamp);
-        Command lampOff = new LampOffCommand(livingRoomLamp);
+        Command lampOn = new LampOnCommand(lamp);
+        Command lampOff = new LampOffCommand(lamp);
 
         MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.undo();
 
-        InOrder inOrder = inOrder(livingRoomLamp);
-        inOrder.verify(livingRoomLamp).off();
-        inOrder.verify(livingRoomLamp).on();
-        verifyNoMoreInteractions(livingRoomLamp);
+        InOrder inOrder = inOrder(lamp);
+        inOrder.verify(lamp).off();
+        inOrder.verify(lamp).on();
+        verifyNoMoreInteractions(lamp);
     }
 
     @Test
     void executeAndUndo_shouldCallCorrectMethods() {
-        Command lampOn = new LampOnCommand(livingRoomLamp);
-        Command lampOff = new LampOffCommand(livingRoomLamp);
+        Command lampOn = new LampOnCommand(lamp);
+        Command lampOff = new LampOffCommand(lamp);
 
         MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.execute();
         macro.undo();
 
-        verify(livingRoomLamp, times(2)).on();
-        verify(livingRoomLamp, times(2)).off();
+        verify(lamp, times(2)).on();
+        verify(lamp, times(2)).off();
     }
 }
