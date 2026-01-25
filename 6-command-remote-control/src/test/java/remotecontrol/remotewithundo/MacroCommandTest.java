@@ -12,49 +12,49 @@ import static org.mockito.Mockito.*;
 class MacroCommandTest {
 
     @Mock
-    Command stereoOn;
-    @Mock
-    Command stereoRadio;
-    @Mock
-    Command stereoOff;
+    Lamp livingRoomLamp;
 
     @Test
-    void execute_executes_all_commands_in_order() {
-        Command[] commands = { stereoOn, stereoRadio, stereoOff };
-        MacroCommand macro = new MacroCommand(commands);
+    void execute_shouldExecuteAllCommands() {
+        Command lampOn = new LampOnCommand(livingRoomLamp);
+        Command lampOff = new LampOffCommand(livingRoomLamp);
+
+        MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.execute();
 
-        InOrder inOrder = inOrder(stereoOn, stereoRadio, stereoOff);
-        inOrder.verify(stereoOn).execute();
-        inOrder.verify(stereoRadio).execute();
-        inOrder.verify(stereoOff).execute();
+        InOrder inOrder = inOrder(livingRoomLamp);
+        inOrder.verify(livingRoomLamp).on();
+        inOrder.verify(livingRoomLamp).off();
+        verifyNoMoreInteractions(livingRoomLamp);
     }
 
     @Test
-    void undo_calls_undo_on_all_commands_in_order() {
-        Command[] commands = { stereoOn, stereoRadio, stereoOff };
-        MacroCommand macro = new MacroCommand(commands);
+    void undo_shouldUndoAllCommands() {
+        Command lampOn = new LampOnCommand(livingRoomLamp);
+        Command lampOff = new LampOffCommand(livingRoomLamp);
+
+        MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.undo();
 
-        InOrder inOrder = inOrder(stereoOn, stereoRadio, stereoOff);
-        inOrder.verify(stereoOn).undo();
-        inOrder.verify(stereoRadio).undo();
-        inOrder.verify(stereoOff).undo();
+        InOrder inOrder = inOrder(livingRoomLamp);
+        inOrder.verify(livingRoomLamp).off();
+        inOrder.verify(livingRoomLamp).on();
+        verifyNoMoreInteractions(livingRoomLamp);
     }
 
     @Test
-    void execute_and_undo_both_delegate_correctly() {
-        Command[] commands = { stereoOn, stereoRadio };
-        MacroCommand macro = new MacroCommand(commands);
+    void executeAndUndo_shouldCallCorrectMethods() {
+        Command lampOn = new LampOnCommand(livingRoomLamp);
+        Command lampOff = new LampOffCommand(livingRoomLamp);
+
+        MacroCommand macro = new MacroCommand(new Command[]{lampOn, lampOff});
 
         macro.execute();
         macro.undo();
 
-        verify(stereoOn).execute();
-        verify(stereoRadio).execute();
-        verify(stereoOn).undo();
-        verify(stereoRadio).undo();
+        verify(livingRoomLamp, times(2)).on();
+        verify(livingRoomLamp, times(2)).off();
     }
 }
