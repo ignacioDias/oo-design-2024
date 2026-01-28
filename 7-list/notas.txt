@@ -1,0 +1,2 @@
+no sé si es correcto definir una clase en el mismo método donde la uso por única vez (como lo hice con el iterator en el adapter de la LL class) 
+o definirla en un archivo aparte como se suele hacer..
